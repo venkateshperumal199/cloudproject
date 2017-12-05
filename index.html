@@ -111,22 +111,21 @@
         <ul>
             <li>Naive Bayes Classifier
                 <ul>
-                <li>Involves Linear Comparison (i.e Comparison of input image matrix  with matrix of all  the images in the dataset.Calculating the norm of difference of the two matrices- Face Distance and returning the top 10 with least distance) of Face encodings ( a (1,128) image feature matrix ) generated using the Face Recognition library</li>
+                <li>It is a classification technique based on Bayes' Theorem with an assumption of independence among predictors. In simple terms, a Naive Bayes classifier assumes that the presence of a particular feature in a class is unrelated to the presence of any other feature</li>
                 </ul>
             </li>
 
             <li>Logistic Regression
             <ul>
-                <li>Running K-Means on the image feature set of entire dataset and forming Clusters as a Pre-processing Step.</li>
-                <li>Runnning the Comparation on the pre-processed clusters and identifying the top 3 Clusters with least Face distance to the input image and retrieving the top 10 images with least face distance in those Clusters</li>
+                <li>We would be providing classification results for each author and approach the problem as a 2-class classifier and not a k-class classifier. The result would hence be of the form: Document belongs to the author or Document does not belong to the author. We then bifurcate the data into a training set (70%) and a test set (30%). We train the logistic regression model on the training set and predict the outcome based on the test set. </li>
             </ul>
 
             </li>
 
             <li>K Nearest Neigbors
                 <ul>
-                <li>Running Principal Component Analysis on the image feature set of entire dataset and forming a a matrix with M principal features instead of D features as a Pre-processing Step.</li>
-                <li>Computing the matrix of M feature set for input image using the mean and principal components of dataset (stored in previous step) and comparing it with dataset images with M features stored as a intermediate file in the previous step .</li>
+                <li>Computing the TFIDF scores of all unique words is computed for each Author in training corpus. TFIDF scores of all unique words is computed for each author in test corpus.Euclidean distance is calculated by comparing the selected test document TFIDF scores with TFIDF scores of each document present in the training set. The documents are ranked in ascending order. K value is selected, and first K number of documents are selected from the ranked list. Author with highest number of document in the K list, classified as author for the test document selected.
+</li>
 
                 </ul>
 
