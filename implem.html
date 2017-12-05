@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Author Identification using different classification methods</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/round-about.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                  
+                    <li>
+                        <a href="index.html">Overview</a>
+                    </li>
+                    <li>
+                        <a href="motive.html">Motivation</a>
+                    </li>
+                    <li>
+                        <a href="implem.html">Implementation</a>
+                    </li>
+                     <li>
+                        <a href="data.html">Dataset</a>
+                    </li>
+                    <li>
+                        <a href="perform.html">Performance</a>
+                    </li>
+                    <li>
+                        <a href="results.html">Results</a>
+                    </li>
+                     <li>
+                        <a href="accomp.html">Accomplishments</a>
+                    </li>
+                    <li>
+                        <a href="roles.html">Roles</a>
+                    </li>
+                     <li>
+                        <a href="ref.html">Observations and External References</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Introduction Row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    <small>Author Identification using different classification methods</small>
+                </h1>
+                <p>
+                    CS Graduate Students at University of North Carolina Charlotte
+                </p>
+            </div>
+        </div>
+
+        <!-- Team Members Row -->
+          <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">Our Team</h2>
+            </div>
+            <h3>Allen Sylvester Irudayaraj</h3>
+            <h3>Advaith Auron Suresh</h3>
+            <h3>VenkateshPerumal Chockalingam</h3>
+           
+        </div>
+        <div class="container">
+        <h1>Implementation</h1>
+        <p>
+        <ul>
+        <li>
+            <b>Logistic Regression</b>
+            <ul>
+            <li> We have implemented a standard logistic regression model in this project. We aim at obtaining weights which could maximize the likeliness or likelihood of obtaining our data and model it in such a way that it is able to clearly distinguish the target values. We use the concept of maximum likelihood estimation to obtain the result. The problem of optimization is resolved using gradient ascent as the maximization of likelihood in logistic regression is devoid of a closed form solution.  
+            </li>
+            <b>Processing Steps</b>
+            <li>
+            We would be providing classification results for each author and approach the problem as a 2-class classifier and not a k-class classifier. The result would hence be of the form: Document belongs to the author or Document does not belong to the author. We then bifurcate the data into a training set (70%) and a test set (30%). We train the logistic regression model on the training set and predict the outcome based on the test set. 
+            </li>
+            <b>Data Preparation</b>
+            <li>
+           The data obtained from the dataset is processed before feeding it to the model. We use RDDs to separate files belonging to one class from the others. We then obtain our training data and test data by randomly splitting it. 
+First, we obtain each file as a key value pair containing the filename and its contents as a key and value pair. We iterate through the document corpus for our desired class and model a dictionary of the words used in it. We use a CountVectorizer function defined in the sklearn library to achieve this and obtain a term frequency of words used in each document of the entire training corpus. As a result, we obtain a feature matrix containing the frequency count of each word in a document.
+We use the CountVectorizer function along with some options that allow us to prepare our data for better modeling. The parameters given were:
+            <b>Input = ‘content’:</b>
+            the input is expected to be the sequence strings or bytes items are expected to be analyzed directly
+            <b>stop_words = ‘english’:</b>
+            If ‘english’, a built-in stop word list for English is used
+            <b>lowercase = True:</b>
+            Convert all characters to lowercase before tokenizing
+            <b> max_df = 0.6:</b>
+            When building the vocabulary, ignores terms that have a document frequency strictly higher than the given threshold (corpus-specific stop words). If float, the parameter represents a proportion of documents, integer absolute counts
+            <b> min_df = 5: </b>
+            When building the vocabulary ignore terms that have a document frequency strictly lower than the given threshold.
+            <b> max_features = 1000: </b>
+            If not None, build a vocabulary that only consider the top max_features ordered by term frequency across the corpus
+            <b> Sample Data: </b>
+            The following are a few lines from “Anthony Trollope__A Ride Across Palestine”
+
+Circumstances took me to the Holy Land without a companion, and compelled me to visit Bethany, the Mount of Olives, and the Church of the Sepulchre alone.  I acknowledge myself to be a gregarious animal, or, perhaps, rather one of those which nature has intended to go in pairs.
+
+            </li>
+            <b>Maximum Likelihood:</b>
+            <li>
+            To obtain the maximum likelihood, we use log likelihood as log transformations are monotonic and do not affect weight parameters. We define log-likelihood as a cumulative sum of the training data.
+It is given by the equation:
+
+where xi is the feature data, β is weight and y is the target
+
+To obtain the gradient of the log-likelihood, we take a derivative of the given equation and represent it in the form of a matrix, that gives us:
+
+            </li>
+            </ul>
+
+        </li>
+        <li> <b>K Nearest Neigbors</b>
+        <ul>
+        <li>
+            <p><b>Steps Followed for implementation</b></p><br>
+            <ol> <li>TFIDF scores of all unique words is computed for each Author in training corpus. </li> 
+<li>TFIDF scores of all unique words is computed for each author in test corpus.</li>
+<li>Euclidean distance is calculated by comparing the selected test document TFIDF scores with TFIDF scores of each document present in the training set.</li>
+<li>The documents are ranked in ascending order.</li>
+<li>K value is selected, and first K number of documents are selected from the ranked list.</li>
+<li>Author with highest number of document in the K list, classified as author for the test document selected.
+</li>
+            </ol> <br> <br>
+            <p> <img src="eq.png" width ="200px" height="100px"/><br>                                          
+where,
+                           ‘||xi - vj||’ is the Euclidean distance between xi and vj.
+                           ‘ci’ is the number of data points in ith cluster. 
+
+                           ‘c’ is the number of cluster centers.
+                           <br>
+                           <p><b>Note :- We use the norm Face Distance as given above instead of the Euclidean distance</b></p>
+
+</p>
+<br>
+<br>
+<p>Algorithmic steps for k-means clustering <br>
+
+Let  X = {x1,x2,x3,……..,xn} be the set of data points and V = {v1,v2,…….,vc} be the set of centers.<br><br>
+
+1) Randomly select ‘c’ cluster centers.<br>
+
+2) Calculate the distance between each data point and cluster centers.<br>
+
+3) Assign the data point to the cluster center whose distance from the cluster center is minimum of all the cluster centers..<br>
+
+4) Recalculate the new cluster center using:  <br>
+<img src="eq2.png" width="200px" height="100px"/><br>
+
+
+
+
+where, ‘ci’ represents the number of data points in ith cluster.<br>
+
+
+
+5) Recalculate the distance between each data point and new obtained cluster centers.<br>
+
+6) If no data point was reassigned then stop, otherwise repeat from step 3).<br>
+
+ </p><br>
+
+ <p>
+ Once the Clusters are formed , for each input image we find the best three clusters based on the face distance with Cluster Center matrices and retrieve the Top 10 images in those Clusters alone.
+ </p>
+
+
+
+        </li>
+
+
+        </ul>
+
+        </li>
+
+        <li> <b>Principal Component Dimensionality Reduction </b><br>
+
+         <p>Principal component analysis (PCA) is a technique used to emphasize variation and bring out strong patterns in a dataset. It's often used to make data easy to explore and visualize.
+
+</p> <br>
+        <p> In our case say we have a input feature set of 128 (D) features our goal is to generate the M features matrix for every input image </p><br>
+
+        <p> We calculate the Mean of the matrices in the input dataset and generate covariance matrix and principal components as a pre-processing step and save the dimension reduced matrices , mean and principal  components in a file </p><br>
+
+        <b> For calculating the eigen values we have used numpy package from python</b><br>
+
+        <p>The above step is a preprocessing step, so for each input image we calculate the M feature matrix using the mean and principal components and compare them with the M dimension matrices of the dataset images precomputed </p><br>
+
+        <p>We then return the results on applying face distance and sort them in ascending order and retrieve the top 10 results </p><br>
+        <br>
+
+
+
+
+        </li>
+
+
+
+        </ul>
+
+
+        </p>
+        <br>
+
+        <br>
+        <h2> Challenges</h2>
+        <ul>
+        <li>  The optimum value of k in K-means clustering might be the number of person faces in
+the data set - <b>For our Use Case the number K is obtained from the knowledge of number of unique people in the dataset </b>
+
+
+        </li>
+        <li>The challenge of the k-Means clustering approach is determining the centroid (cluster
+center) of each cluster. Choosing the outer boundaries would take a lot of time to
+converge.- <b> Randomly we choose a centroid ensuring the chosen cluster center does not have same prefix name as the previously chosen ones example gates_1 and gates_10 may not be chosen since they have same prefix</b>
+        </li>
+        <li>The challenge of the PCA approach is to determine the m features from the 128
+measurements - <b> The value of M value is identified whenever there is steep decrease in the  eigen values ,sorted in descending order, generated for the covariance matrix of the dataset atleast 10 power -1</b>
+        </li>
+        </ul>
+
+        <h2>Tools Used</h2>
+        <div>
+            <p>
+            Python, Spark,<br>
+Face Recognition Library - <a href="https://github.com/ageitgey/face_recognition#face-recognition"> Click here </a> 
+            </p>
+
+        </div>
+
+        </div>
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Face Matching 2017</p>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
