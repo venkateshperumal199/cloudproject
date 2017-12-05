@@ -108,24 +108,13 @@
         <h1>Performance</h1>
          <div>
          <p> With regard to performance , we are worried about the accuracy of results and computational complexity  </p> <br>
-         <h2> Linear comparison</h2><br>
-          <p> The complexity of linear comparison is the time needed to calculate the norm of difference matrix which is 128 featured matrix.So the time complexity for a L2 Norm is O(3D) where D= 128 in our case</p><br><p>With N images comparison, the time complexity will be closer to O(ND) , for gates_1.jpg we got time to do linear comparison  as <b>155.474338055 seconds</b>  </p><br>
-          <h2>K-Means Comaprison</h2><br>
-          <p>In K-Means ,the complexity to find the Cluster as the preprocessing  step is O(N^(DK+1)) where N is the number  of images , D is the dimensions</p><br>
-          <p>The above preprocessing step is done  only once.Everytime we compare only the images in the top 3 clusters which match with the input image say the number of images in the top 3 cluster is K(less than N) , the time complexity for Comparison is reduced as O(KD) instead of O(ND),for gate_1.jpg we got the time to compute top 10 results after formin cluster with K-means as <b>93.594383955 seconds</b></p><br>
-
-          <h2>PCA based Comparison</h2><br>
-          <p>In PCA , we reduce the dimensions as preprocessing step  to M featured matrix.The time complexity for doing PCA is O(p^2*n+p^3).Since Covariance matrix computation is O(p^n); its eigen-value decomposition is O(p^3) where p is the number of features in our case 128 and n is the number of images </p><br>
-
-          <p>For Comparison Stage , the time complexity is reduced compared to K-means and  Linear as we do L2 norm of M features which is less than the original D features .So Complexity is O(NM) where M is reduced features and N is the number of images.In our case , we found that PCA was fastest with gates_1.jpg where we got the time to compute as<b>16.2009830475 seconds</b></p>
+         
 
 
 
           <br>
 
-          <h2>Cluster Scatter Plot</h2>
-          <img src="image.jpg" width="700px" height="500px"/>
-
+          
 
 
 
