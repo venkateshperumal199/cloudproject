@@ -111,14 +111,14 @@
         <li>
         Naive Bayes Classifier
         <ul>
-            <li>Linear comparison of images involving N images takes N comparisons and each comparation  involving calculating the difference of the 128 feature set  and calculating the L2 Norm of the difference
+            <li>Naive Bayes Classifier involves first separating the document into training and test set. Then calculating the prior and conditional probabilities for the training set. And then calculating probabilities of test set with conditional probability value of training set.
 
             </li> 
             <li>Disadvantages with this approach
             <ol>
-            <li>With the Use case of needing the Top 10 results, we unnecessarily compare faces even though two faces are distinct from each other</li>
+            <li>Naive Bayes classifier makes a very strong assumption on the shape of your data distribution, i.e. any two features are independent given the output class. Due to this, the result can be (potentially) very bad - hence, a “naive” classifier.</li>
             <li>
-                Additionally we Compare all the 128 features there might be some components in the matrices that do no affect the results. 
+                Another problem happens due to data scarcity. For any possible value of a feature, you need to estimate a likelihood value by a frequentist approach. This can result in probabilities going towards 0 or 1, which in turn leads to numerical instabilities and worse results. In this case, you need to smooth in some way your probabilities. 
             </li>
 
             </ol>
@@ -130,20 +130,17 @@
         <li>
         Logistic Regression
         <ul>
-        <li>Since K-Means is a pre-processing step, We compare the input face only with images in the closely matching cluster therby reducing the N value </li>
+        <li>We have implemented a standard logistic regression model in this project. We aim at obtaining weights which could maximize the likeliness or likelihood of obtaining our data and model it in such a way that it is able to clearly distinguish the target values.  </li>
         </ul>
         </li>
         <li>
         K Nearest Neigbors
         <ul>
-        As a pre-processing step , we calculate the principal components of the dataset and use only those components for comparison 
-        say we reduce the matrix from 128 to 7 features set . So Now we run the comparing step on these reduced principal feature set.
+        KNN technique involves calculating the TFIDF scores of all unique words for each author corpus. TFIDF scores of all unique words is computed for each author in test corpus. Euclidean distance is calculated by comparing the selected test document TFIDF scores with TFIDF scores of each document present in the training set.
         </ul>
         </li>
 
         </ul>
-
-        <p>The above techniques makes the computation of matching results quicker even though there might be slight negligible trade-off with accuracy .This kind of techniques will be useful in automatic face detection and face tagging techniques available in Social Networks.  </p>
 
 
         </div>
