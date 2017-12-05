@@ -106,18 +106,16 @@
         <div class="container">
         <h1>Overview</h1>
         <h3>Proposed Project Goal</h3>
-        <p> To compare the performance , computational complexity and accuracy of results using K-means and PCA on matching
-similar faces from a large dataset of faces of individuals using 128 distinct measurements from
-every face.</p>
-        <h3>Stages</h3>
+        <p> The project is to develop a language model using three different classification algorithms which classifies the input corpus based on the author’s name, and then evaluates them based on the accuracy of classification</p>
+        <h3>Algorithms</h3>
         <ul>
-            <li>Linear Comparison
+            <li>Naive Bayes Classifier
                 <ul>
                 <li>Involves Linear Comparison (i.e Comparison of input image matrix  with matrix of all  the images in the dataset.Calculating the norm of difference of the two matrices- Face Distance and returning the top 10 with least distance) of Face encodings ( a (1,128) image feature matrix ) generated using the Face Recognition library</li>
                 </ul>
             </li>
 
-            <li>Pre-processed K-Means Cluster based Comparison
+            <li>Logistic Regression
             <ul>
                 <li>Running K-Means on the image feature set of entire dataset and forming Clusters as a Pre-processing Step.</li>
                 <li>Runnning the Comparation on the pre-processed clusters and identifying the top 3 Clusters with least Face distance to the input image and retrieving the top 10 images with least face distance in those Clusters</li>
@@ -125,7 +123,7 @@ every face.</p>
 
             </li>
 
-            <li>Pre-processed Principal Components based comparison using Principal Component Analysis as a pre-processing step
+            <li>K Nearest Neigbors
                 <ul>
                 <li>Running Principal Component Analysis on the image feature set of entire dataset and forming a a matrix with M principal features instead of D features as a Pre-processing Step.</li>
                 <li>Computing the matrix of M feature set for input image using the mean and principal components of dataset (stored in previous step) and comparing it with dataset images with M features stored as a intermediate file in the previous step .</li>

@@ -39,7 +39,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Cloud group 12</a>
+                
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -106,10 +106,10 @@
         </div>
         <div class="container">
         <h1>Motivation</h1>
-        <p>To reduce the time required to compare the images in a dataset and retrieve the Close the matches with little or no effect to the accuracy of results </p>
+        <p>To easily classify the works of authors rather than doing exegesis manually</p>
         <ul>
         <li>
-        Linear Comparison with N dataset Images
+        Naive Bayes Classifier
         <ul>
             <li>Linear comparison of images involving N images takes N comparisons and each comparation  involving calculating the difference of the 128 feature set  and calculating the L2 Norm of the difference
 
@@ -128,13 +128,13 @@
         </li>
 
         <li>
-        K-Means Cluster Comparison
+        Logistic Regression
         <ul>
         <li>Since K-Means is a pre-processing step, We compare the input face only with images in the closely matching cluster therby reducing the N value </li>
         </ul>
         </li>
         <li>
-        Principal Components Comparison
+        K Nearest Neigbors
         <ul>
         As a pre-processing step , we calculate the principal components of the dataset and use only those components for comparison 
         say we reduce the matrix from 128 to 7 features set . So Now we run the comparing step on these reduced principal feature set.
