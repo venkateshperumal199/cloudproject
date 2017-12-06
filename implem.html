@@ -154,6 +154,33 @@ To obtain the gradient of the log-likelihood, we take a derivative of the given 
 
         </li>
         <li> <b>Naive Bayes Classifier </b>
+        <p><b>Computations followed for implementation</b></p><br>
+        <ol>
+        <li> Calculation of Prior Probability on Training set </li>
+        <p> Consider Author “Charles Dickens”, 
+            
+            <div class="col-lg-14 col-sm-16 text-center">
+                <img class="img-responsive img-center" src="NBC2.png" alt="" >
+                <p></p>
+            </div>
+
+        Similarly, the prior probability for every other author is calculated. </p>
+        <li> Conditional Probability Calculation on training set </li>
+        <p> Conditional probability is calculated for all the unique words for each author corpus.
+        Consider there is a word “Though” in a document in “Charles Dickens” corpus, then the conditional probability of the word is, 
+             <div class="col-lg-14 col-sm-16 text-center">
+                <img class="img-responsive img-center" src="NBC3.png" alt="" >
+                <p></p>
+            </div>
+        </p>
+        <li> Testing Part Computation </li>
+        <p> Consider if a test document “Doc1” is selected, then the probability of that document belonging to an Author (Class) is calculated by the following formula,
+             <div class="col-lg-14 col-sm-16 text-center">
+                <img class="img-responsive img-center" src="NBC4.png" alt="" >
+                <p></p>
+            </div>
+        </p>
+        </ol>
         <ul> 
         <li>
         <p><b>Steps Followed for implementation</b></p><br>
