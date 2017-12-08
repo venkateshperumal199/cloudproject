@@ -109,37 +109,46 @@
         <p>
         
         
-            <b></b>
-            <ul>
-            <li> We have implemented a standard logistic regression model in this project. We aim at obtaining weights which could maximize the likeliness or likelihood of obtaining our data and model it in such a way that it is able to clearly distinguish the target values. We use the concept of maximum likelihood estimation to obtain the result. The problem of optimization is resolved using gradient ascent as the maximization of likelihood in logistic regression is devoid of a closed form solution.  
-            </li>
+                     
+             We have implemented a standard logistic regression model in this project. We aim at obtaining weights which could maximize the likeliness or likelihood of obtaining our data and model it in such a way that it is able to clearly distinguish the target values. We use the concept of maximum likelihood estimation to obtain the result. The problem of optimization is resolved using gradient ascent as the maximization of likelihood in logistic regression is devoid of a closed form solution.  </p>
+            
             <b>Processing Steps</b>
+            <ul>
             <li>
-            We would be providing classification results for each author and approach the problem as a 2-class classifier and not a k-class classifier. The result would hence be of the form: Document belongs to the author or Document does not belong to the author. We then bifurcate the data into a training set (70%) and a test set (30%). We train the logistic regression model on the training set and predict the outcome based on the test set. 
+            We would be providing classification results for each author and approach the problem as a 2-class classifier and not a k-class classifier. </li>
+            <li>The result would hence be of the form: 
+            <p>Document belongs to the author or Document does not belong to the author.</p></li>
+            <li> We then bifurcate the data into a training set (70%) and a test set (30%).</li> 
+            <li>We train the logistic regression model on the training set and predict the outcome based on the test set. 
             </li>
+            </ul>
             <b>Data Preparation</b>
+            <ol>
             <li>
-           The data obtained from the dataset is processed before feeding it to the model. We use RDDs to separate files belonging to one class from the others. We then obtain our training data and test data by randomly splitting it. 
-First, we obtain each file as a key value pair containing the filename and its contents as a key and value pair. We iterate through the document corpus for our desired class and model a dictionary of the words used in it. We use a CountVectorizer function defined in the sklearn library to achieve this and obtain a term frequency of words used in each document of the entire training corpus. As a result, we obtain a feature matrix containing the frequency count of each word in a document.
-We use the CountVectorizer function along with some options that allow us to prepare our data for better modeling. The parameters given were:
-            <b>Input = ‘content’:</b>
-            the input is expected to be the sequence strings or bytes items are expected to be analyzed directly
-            <b>stop_words = ‘english’:</b>
-            If ‘english’, a built-in stop word list for English is used
-            <b>lowercase = True:</b>
-            Convert all characters to lowercase before tokenizing
-            <b> max_df = 0.6:</b>
-            When building the vocabulary, ignores terms that have a document frequency strictly higher than the given threshold (corpus-specific stop words). If float, the parameter represents a proportion of documents, integer absolute counts
-            <b> min_df = 5: </b>
-            When building the vocabulary ignore terms that have a document frequency strictly lower than the given threshold.
-            <b> max_features = 1000: </b>
-            If not None, build a vocabulary that only consider the top max_features ordered by term frequency across the corpus
-            <b> Sample Data: </b>
+           The data obtained from the dataset is processed before feeding it to the model. </li>
+           <li>We use RDDs to separate files belonging to one class from the others. We then obtain our training data and test data by randomly splitting it. </li>
+<li>First, we obtain each file as a key value pair containing the filename and its contents as a key and value pair. We iterate through the document corpus for our desired class and model a dictionary of the words used in it.</li>
+<li> We use a CountVectorizer function defined in the sklearn library to achieve this and obtain a term frequency of words used in each document of the entire training corpus. </li>
+<li>As a result, we obtain a feature matrix containing the frequency count of each word in a document. </li>
+<li> We use the CountVectorizer function along with some options that allow us to prepare our data for better modeling. The parameters given were:</li> </ol>
+  <ul>     <li>     <b>Input = ‘content’:</b>
+            the input is expected to be the sequence strings or bytes items are expected to be analyzed directly </li>
+            <li> <b>stop_words = ‘english’:</b>
+            If ‘english’, a built-in stop word list for English is used </li>
+            <li> <b>lowercase = True:</b>
+            Convert all characters to lowercase before tokenizing </li>
+            <li><b> max_df = 0.6:</b>
+            When building the vocabulary, ignores terms that have a document frequency strictly higher than the given threshold (corpus-specific stop words). If float, the parameter represents a proportion of documents, integer absolute counts </li>
+            <li><b> min_df = 5: </b>
+            When building the vocabulary ignore terms that have a document frequency strictly lower than the given threshold. </li>
+            <li><b> max_features = 1000: </b>
+            If not None, build a vocabulary that only consider the top max_features ordered by term frequency across the corpus </li>
+            <li><b> Sample Data: </b>
             The following are a few lines from “Anthony Trollope__A Ride Across Palestine”
 
-Circumstances took me to the Holy Land without a companion, and compelled me to visit Bethany, the Mount of Olives, and the Church of the Sepulchre alone.  I acknowledge myself to be a gregarious animal, or, perhaps, rather one of those which nature has intended to go in pairs.
+Circumstances took me to the Holy Land without a companion, and compelled me to visit Bethany, the Mount of Olives, and the Church of the Sepulchre alone.  I acknowledge myself to be a gregarious animal, or, perhaps, rather one of those which nature has intended to go in pairs. </li>
 
-            </li>
+            </ul>
             <b>Maximum Likelihood:</b>
             <li>
             To obtain the maximum likelihood, we use log likelihood as log transformations are monotonic and do not affect weight parameters. We define log-likelihood as a cumulative sum of the training data.
@@ -198,7 +207,7 @@ To obtain the gradient of the log-likelihood, we take a derivative of the given 
         <h1>K Nearest Neigbors</h1>
         <p><b>Computations followed for implementation</b></p><br>
         <ol>
-        <li> TFIDF Score Computation </li>
+        <b><li> TFIDF Score Computation </li></b>
         <p> 
         TFIDF = Term frequency (TF) * Inverse Document Frequency (IDF) </p>
         <p>•   TF (t, d) = 1 + log10(Count of word w in document d)</p>
@@ -207,7 +216,7 @@ To obtain the gradient of the log-likelihood, we take a derivative of the given 
         <p>Where N = Total number of documents for a single author </p>
         <p>DF = Number of documents containing the word w for a single author corpus.
         </p>
-        <li> Euclidean Distance Computation </li>
+        <b><li> Euclidean Distance Computation </li></b>
         <p>
         Euclidean distance determines the vector distance between the documents by using the following equation,
         D (x, y) = √∑Nr=1 (arx – ary)2
@@ -217,7 +226,7 @@ To obtain the gradient of the log-likelihood, we take a derivative of the given 
             ary is the TFIDF score of the word r in document y (Test Document).
         </p>
         </ol>
-        <li> <b></b>        
+                
             <p><b>Steps Followed for implementation</b></p><br>
           <ul><ol> <li>TFIDF scores of all unique words is computed for each Author in training corpus. </li> 
 <li>TFIDF scores of all unique words is computed for each author in test corpus.</li>
