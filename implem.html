@@ -105,11 +105,11 @@
            
         </div>
         <div class="container">
-        <h1>Implementation</h1>
+        <h1>Logistic Regression</h1>
         <p>
         <ul>
         <li>
-            <b>Logistic Regression</b>
+            <b></b>
             <ul>
             <li> We have implemented a standard logistic regression model in this project. We aim at obtaining weights which could maximize the likeliness or likelihood of obtaining our data and model it in such a way that it is able to clearly distinguish the target values. We use the concept of maximum likelihood estimation to obtain the result. The problem of optimization is resolved using gradient ascent as the maximization of likelihood in logistic regression is devoid of a closed form solution.  
             </li>
@@ -153,7 +153,8 @@ To obtain the gradient of the log-likelihood, we take a derivative of the given 
             </ul>
 
         </li>
-        <li> <b>Naive Bayes Classifier </b>
+        <h1>Naive Bayes Classifier</h1>
+        <li> <b> </b>
         <p><b>Computations followed for implementation</b></p><br>
         <ol>
         <li> Calculation of Prior Probability on Training set </li>
@@ -194,7 +195,29 @@ To obtain the gradient of the log-likelihood, we take a derivative of the given 
          
         </ol>
         </ul>
-        <li> <b>K Nearest Neigbors</b>
+        <h1>K Nearest Neigbors</h1>
+        <p><b>Computations followed for implementation</b></p><br>
+        <ol>
+        <li> TFIDF Score Computation </li>
+        <p> 
+        TFIDF = Term frequency (TF) * Inverse Document Frequency (IDF)
+        •   TF (t, d) = 1 + log10(Count of word w in document d)
+        Where TF is calculated as number of occurrences of a word w in a document d. 
+        •   IDF (t) = 1 + log10(N/DF)
+        Where N = Total number of documents for a single author
+        DF = Number of documents containing the word w for a single author corpus.
+        </p>
+        <li> Euclidean Distance Computation </li>
+        <p>
+        Euclidean distance determines the vector distance between the documents by using the following equation,
+        D (x, y) = √∑Nr=1 (arx – ary)2
+        Where D (x, y) is the distance between two documents x and y.
+        N is the number of unique words in both the document x and y.
+            arx is the TFIDF score of the word r in document x (Training Document).
+            ary is the TFIDF score of the word r in document y (Test Document).
+        </p>
+        </ol>
+        <li> <b></b>
         <ul>
         <li>
             <p><b>Steps Followed for implementation</b></p><br>
